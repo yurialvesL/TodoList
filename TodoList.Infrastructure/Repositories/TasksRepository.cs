@@ -44,15 +44,8 @@ public class TasksRepository : ITasksRepository
 
     public async Task<IEnumerable<Tasks>> GetTasksAsync()
     {
-        try
-        {
-            var tasks =  await _context.Tasks.AsNoTracking().ToListAsync();
-            return tasks;
-        }
-        catch (Exception)
-        {
-            throw;
-        }
+        return  await _context.Tasks.AsNoTracking().ToListAsync();
+       
     }
 
     public async Task<Tasks> UpdateAsync(Tasks tasks)
