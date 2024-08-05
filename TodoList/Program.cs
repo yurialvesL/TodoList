@@ -53,11 +53,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.ConfigObject.AdditionalItems.Add("syntaxHighlight", false); 
-        c.ConfigObject.AdditionalItems.Add("theme", "agate"); 
-    });
+    app.UseSwaggerUI();
     app.ConfigureExceptionHandler();
 }
 

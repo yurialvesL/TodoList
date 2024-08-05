@@ -80,7 +80,7 @@ public class TasksController : ControllerBase
     /// <returns>Tasks Object created</returns>
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesDefaultResponseType]
     public async Task<ActionResult<TasksResultDTO>> Post([FromBody] TaskRequestDTO tasksDTO)
     {
@@ -100,7 +100,7 @@ public class TasksController : ControllerBase
     /// <returns>Tasks Object Updated</returns>
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(Microsoft.AspNetCore.Mvc.ModelBinding.ModelStateDictionary), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
     [ProducesDefaultResponseType]
     public async Task<ActionResult<TasksResultDTO>> Put(Guid id, [FromBody] TaskRequestDTO tasksDTO)
@@ -124,6 +124,8 @@ public class TasksController : ControllerBase
     /// <param name="id"></param>
     /// <returns>Tasks object deleted</returns>
     [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
     public async Task<ActionResult<Tasks>> Delete(Guid id)
     {
         var tasksDTO = await _tasksService.GetById(id);
